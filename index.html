@@ -1,11 +1,24 @@
 <html lang="en">
   <head>
     <script src="elm.js"></script>
+    <script src="papaparse.min.js"></script>
     <link href="style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <script type="text/javascript">
-      var app = Elm.Main.init();
+      fetch('./birds.csv')
+      .then(resp => resp.text())
+      .then(csvString => {
+        var birdCsv = Papa.parse(csvString, { header: true });
+        // last item is a dud
+        birdCsv.data.length = birdCsv.data.length - 1;
+        var app = Elm.Main.init({
+          flags: { birdData: birdCsv.data }
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
     </script>
   </body>
 </html>

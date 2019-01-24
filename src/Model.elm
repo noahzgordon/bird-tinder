@@ -4,13 +4,23 @@ import Messages exposing (Message)
 
 
 type alias Model =
-    {}
+    { birds : List BirdData
+    }
+
+
+type alias BirdData =
+    { name : String
+    , location : String
+    }
 
 
 type alias Flags =
-    {}
+    { birdData : List BirdData
+    }
 
 
 init : Flags -> ( Model, Cmd Message )
 init flags =
-    ( {}, Cmd.none )
+    ( { birds = flags.birdData }
+    , Cmd.none
+    )
