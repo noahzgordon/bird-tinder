@@ -1,0 +1,35 @@
+.other-card {
+  z-index: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.next-card {
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.top-card {
+  z-index: 2;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.card-container {
+  position: relative;
+  height: 100%;
+}
+
+.no-more {
+  white-space: normal !important;
+  position: absolute;
+  padding: 100px 20px;
+  z-index: 0;
+  text-align: center;
+  overflow: none;
+  margin: auto;
+}

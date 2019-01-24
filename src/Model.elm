@@ -1,16 +1,25 @@
-module Model exposing (Flags, Model, init)
+module Model exposing (BirdData, Flags, Model, init, initCardStyle)
 
+import Animation
+import Animation.Messenger
 import Messages exposing (Message)
 
 
 type alias Model =
-    { birds : List BirdData
+    { remainingBirds : List BirdData
+    , likedBirds : List BirdData
+    , dislikedBirds : List BirdData
+    , topCardStyle : Animation.Messenger.State Message
+    , showNextCard : Bool
     }
 
 
 type alias BirdData =
     { name : String
     , location : String
+    , description : String
+    , distance : String
+    , image : String
     }
 
 
@@ -21,6 +30,19 @@ type alias Flags =
 
 init : Flags -> ( Model, Cmd Message )
 init flags =
-    ( { birds = flags.birdData }
+    ( { remainingBirds = flags.birdData
+      , likedBirds = []
+      , dislikedBirds = []
+      , topCardStyle = initCardStyle
+      , showNextCard = False
+      }
     , Cmd.none
     )
+
+
+initCardStyle : Animation.Messenger.State Message
+initCardStyle =
+    Animation.style
+        [ Animation.translate (Animation.px 0) (Animation.px 0)
+        , Animation.rotate (Animation.deg 0)
+        ]

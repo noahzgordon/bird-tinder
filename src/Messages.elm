@@ -1,5 +1,11 @@
-module Messages exposing (Message)
+module Messages exposing (Message(..))
+
+import Animation
 
 
 type Message
-    = Noop
+    = AnimateTopCard Animation.Msg
+    | BirdDismissed
+    | BirdLiked
+    | BirdLikeCompleted
+    | BirdDismissalCompleted
