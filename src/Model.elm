@@ -20,6 +20,7 @@ type alias BirdData =
     , description : String
     , distance : String
     , image : String
+    , message : Maybe String
     }
 
 

@@ -53,7 +53,7 @@ update message model =
                 top :: rest ->
                     ( { model
                         | remainingBirds = rest
-                        , likedBirds = top :: model.likedBirds
+                        , likedBirds = Debug.log "bird" top :: model.likedBirds
                         , showNextCard = False
                         , topCardStyle = Model.initCardStyle
                       }
