@@ -8,7 +8,7 @@ import Element.Border as Border
 import Element.Font as Font
 import Element.Input as Input
 import Html
-import Html.Attributes
+import Html.Attributes exposing (class)
 import Icons
 import Messages exposing (Message(..))
 import Model exposing (BirdData, Model)
@@ -29,13 +29,18 @@ colors =
 
 layout : Model -> Element Message
 layout model =
+    let
+        currentBird =
+            List.head model.remainingBirds
+    in
     column
         [ width (fill |> maximum 320)
         , height (fill |> maximum 480)
         , centerX
         , centerY
-        , clip
         , Background.color colors.background
+        , scrollbarY
+        , clipX
         ]
     <|
         [ -- header
@@ -44,8 +49,53 @@ layout model =
             , height (px 40)
             ]
             []
-        , el [ width fill, height fill ]
-            (html <|
+        , column
+            [ width fill
+            , height
+                (if model.detailedView then
+                    px 250
+
+                 else
+                    fill
+                )
+
+            -- detail view button
+            , inFront <|
+                if model.detailedView then
+                    Input.button
+                        [ width (px 30)
+                        , height (px 30)
+                        , Background.color (rgb 1 1 1)
+                        , Border.rounded 100
+                        , Border.glow (rgb 0.8 0.8 0.8) 2
+                        , alignBottom
+                        , alignRight
+                        , moveUp 30
+                        , moveLeft 20
+                        , htmlAttribute (class "cardfront")
+                        ]
+                        { onPress = Just DetailCloseClicked
+                        , label = Icons.retract
+                        }
+
+                else
+                    Input.button
+                        [ width (px 30)
+                        , height (px 30)
+                        , Background.color (rgb 1 1 1)
+                        , Border.rounded 100
+                        , Border.glow (rgb 0.8 0.8 0.8) 2
+                        , alignBottom
+                        , alignRight
+                        , moveUp 30
+                        , moveLeft 20
+                        , htmlAttribute (class "cardfront")
+                        ]
+                        { onPress = Just DetailOpenClicked
+                        , label = Icons.info
+                        }
+            ]
+            [ html <|
                 Html.div [] <|
                     List.indexedMap
                         (\idx bird ->
@@ -60,50 +110,108 @@ layout model =
                                     else
                                         [ Html.Attributes.class "other-card" ]
                             in
-                            Html.div htmlAttrs [ Element.layout [] (card bird []) ]
+                            Html.div htmlAttrs
+                                [ Element.layoutWith
+                                    { options = [ noStaticStyleSheet ] }
+                                    []
+                                    (card (not model.detailedView) bird [])
+                                ]
                         )
                         (List.reverse model.remainingBirds)
                         ++ [ Html.div [ Html.Attributes.class "no-more" ] [ Html.text "We can't find any more birds near you! Try again later." ] ]
-            )
+            ]
         , --footer
-          row
-            [ centerX
-            , centerY
-            , height (px 40)
+          column
+            [ height
+                (if model.detailedView then
+                    fill
+
+                 else
+                    px 50
+                )
+            , width fill
             , paddingEach
                 { top = 0
-                , bottom = 10
-                , left = 20
-                , right = 20
+                , bottom = 20
+                , left = 0
+                , right = 0
                 }
             , spacing 20
+            , inFront
+                (row
+                    [ alignBottom
+                    , centerX
+                    , spacing 20
+                    , moveUp 10
+                    ]
+                    [ Input.button
+                        [ width (px 40)
+                        , height (px 40)
+                        , Background.color (rgb 1 1 1)
+                        , Border.rounded 100
+                        , Border.glow (rgb 0.8 0.8 0.8) 2
+                        ]
+                        { onPress = Just BirdDismissed
+                        , label = Icons.ex
+                        }
+                    , Input.button
+                        [ width (px 40)
+                        , height (px 40)
+                        , Background.color (rgb 1 1 1)
+                        , Border.rounded 100
+                        , Border.glow (rgb 0.8 0.8 0.8) 2
+                        ]
+                        { onPress = Just BirdLiked
+                        , label = Icons.heart
+                        }
+                    ]
+                )
             ]
-            [ Input.button
-                [ width (px 30)
-                , height (px 30)
-                , Background.color (rgb 1 1 1)
-                , Border.rounded 100
-                , Border.glow (rgb 0.8 0.8 0.8) 2
-                ]
-                { onPress = Just BirdDismissed
-                , label = Icons.ex
-                }
-            , Input.button
-                [ width (px 30)
-                , height (px 30)
-                , Background.color (rgb 1 1 1)
-                , Border.rounded 100
-                , Border.glow (rgb 0.8 0.8 0.8) 2
-                ]
-                { onPress = Just BirdLiked
-                , label = Icons.heart
-                }
+            [ if model.detailedView then
+                case currentBird of
+                    Just bird ->
+                        column [ width fill ]
+                            [ column
+                                [ spacing 10
+                                , width fill
+                                , paddingXY 0 20
+                                , Border.widthEach
+                                    { bottom = 1
+                                    , top = 0
+                                    , left = 0
+                                    , right = 0
+                                    }
+                                , Border.solid
+                                , Border.color (rgb 0 0 0)
+                                ]
+                                [ el [ Font.size 28, paddingXY 20 0 ] (text bird.name)
+                                , el [ Font.size 18, paddingXY 20 0 ] (text bird.location)
+                                , el [ Font.size 18, paddingXY 20 0 ] (text bird.distance)
+                                ]
+                            , column
+                                [ spacing 10
+                                , width fill
+                                , paddingXY 0 20
+                                , height
+                                    (fill
+                                        |> minimum 80
+                                    )
+                                ]
+                                [ el [ Font.size 18, paddingXY 20 0 ] (text bird.name)
+                                ]
+                            ]
+
+                    Nothing ->
+                        none
+
+              else
+                none
             ]
         ]
 
 
-card : BirdData -> List (Attribute Message) -> Element Message
-card bird htmlAttrs =
+card : Bool -> BirdData -> List (Attribute Message) -> Element Message
+card showInfo bird htmlAttrs =
     el
         (List.concat
             [ htmlAttrs
@@ -127,14 +235,18 @@ card bird htmlAttrs =
             ]
         )
     <|
-        column
-            [ alignBottom
-            , Font.color (rgb 1 1 1)
-            , Font.glow (rgb 0 0 0) 1
-            , padding 10
-            , spacing 5
-            ]
-            [ el [ Font.size 28 ] (text bird.name)
-            , el [ Font.size 18 ] (text bird.location)
-            , el [ Font.size 18 ] (text bird.distance)
-            ]
+        if showInfo then
+            column
+                [ alignBottom
+                , Font.color (rgb 1 1 1)
+                , Font.glow (rgb 0 0 0) 1
+                , padding 10
+                , spacing 5
+                ]
+                [ el [ Font.size 28 ] (text bird.name)
+                , el [ Font.size 18 ] (text bird.location)
+                , el [ Font.size 18 ] (text bird.distance)
+                ]
+
+        else
+            none

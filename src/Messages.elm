@@ -9,3 +9,5 @@ type Message
     | BirdLiked
     | BirdLikeCompleted
     | BirdDismissalCompleted
+    | DetailOpenClicked
+    | DetailCloseClicked

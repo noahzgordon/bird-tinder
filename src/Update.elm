@@ -28,6 +28,7 @@ update message model =
                         ]
                         model.topCardStyle
                 , showNextCard = True
+                , detailedView = False
               }
             , Cmd.none
             )
@@ -44,6 +45,7 @@ update message model =
                         ]
                         model.topCardStyle
                 , showNextCard = True
+                , detailedView = False
               }
             , Cmd.none
             )
@@ -77,3 +79,9 @@ update message model =
 
                 [] ->
                     ( model, Cmd.none )
+
+        DetailOpenClicked ->
+            ( { model | detailedView = True }, Cmd.none )
+
+        DetailCloseClicked ->
+            ( { model | detailedView = False }, Cmd.none )

@@ -11,6 +11,7 @@ type alias Model =
     , dislikedBirds : List BirdData
     , topCardStyle : Animation.Messenger.State Message
     , showNextCard : Bool
+    , detailedView : Bool
     }
 
 
@@ -36,6 +37,7 @@ init flags =
       , dislikedBirds = []
       , topCardStyle = initCardStyle
       , showNextCard = False
+      , detailedView = False
       }
     , Cmd.none
     )

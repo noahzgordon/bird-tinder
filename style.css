@@ -34,3 +34,7 @@
   overflow: none;
   margin: auto;
 }
+
+.cardfront {
+  z-index: 3;
+}
