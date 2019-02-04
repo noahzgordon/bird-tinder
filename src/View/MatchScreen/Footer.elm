@@ -28,35 +28,38 @@ view model =
             , right = 0
             }
         , spacing 20
-        , inFront
-            (row
-                [ alignBottom
-                , centerX
-                , spacing 20
-                , moveUp 10
-                ]
-                [ Input.button
-                    [ width (px 40)
-                    , height (px 40)
-                    , Background.color (rgb 1 1 1)
-                    , Border.rounded 100
-                    , Border.glow (rgb 0.8 0.8 0.8) 2
+        , inFront <|
+            if not (List.isEmpty model.remainingBirds) then
+                row
+                    [ alignBottom
+                    , centerX
+                    , spacing 20
+                    , moveUp 10
                     ]
-                    { onPress = Just BirdDismissed
-                    , label = Icons.ex
-                    }
-                , Input.button
-                    [ width (px 40)
-                    , height (px 40)
-                    , Background.color (rgb 1 1 1)
-                    , Border.rounded 100
-                    , Border.glow (rgb 0.8 0.8 0.8) 2
+                    [ Input.button
+                        [ width (px 40)
+                        , height (px 40)
+                        , Background.color (rgb 1 1 1)
+                        , Border.rounded 100
+                        , Border.glow (rgb 0.8 0.8 0.8) 2
+                        ]
+                        { onPress = Just BirdDismissed
+                        , label = Icons.ex
+                        }
+                    , Input.button
+                        [ width (px 40)
+                        , height (px 40)
+                        , Background.color (rgb 1 1 1)
+                        , Border.rounded 100
+                        , Border.glow (rgb 0.8 0.8 0.8) 2
+                        ]
+                        { onPress = Just BirdLiked
+                        , label = Icons.heart
+                        }
                     ]
-                    { onPress = Just BirdLiked
-                    , label = Icons.heart
-                    }
-                ]
-            )
+
+            else
+                none
         ]
         [ if model.detailedView then
             case List.head model.remainingBirds of

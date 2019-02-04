@@ -28,7 +28,10 @@ view model =
 
         -- detail view button
         , inFront <|
-            if model.detailedView then
+            if List.isEmpty model.remainingBirds then
+                none
+
+            else if model.detailedView then
                 Input.button
                     [ width (px 30)
                     , height (px 30)

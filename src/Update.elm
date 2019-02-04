@@ -19,7 +19,7 @@ update message model =
         BirdDismissed ->
             ( { model
                 | topCardStyle =
-                    Animation.queue
+                    Animation.interrupt
                         [ Animation.to
                             [ Animation.translate (Animation.px -400) (Animation.px 0)
                             , Animation.rotate (Animation.deg -20)
@@ -36,7 +36,7 @@ update message model =
         BirdLiked ->
             ( { model
                 | topCardStyle =
-                    Animation.queue
+                    Animation.interrupt
                         [ Animation.to
                             [ Animation.translate (Animation.px 400) (Animation.px 0)
                             , Animation.rotate (Animation.deg 20)
