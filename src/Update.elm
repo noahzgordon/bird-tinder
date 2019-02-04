@@ -2,8 +2,8 @@ module Update exposing (update)
 
 import Animation
 import Animation.Messenger
-import Messages exposing (Message(..))
-import Model exposing (Model)
+import Messages exposing (..)
+import Model exposing (..)
 
 
 update : Message -> Model -> ( Model, Cmd Message )
@@ -85,3 +85,6 @@ update message model =
 
         DetailCloseClicked ->
             ( { model | detailedView = False }, Cmd.none )
+
+        MessageScreenButtonClicked ->
+            ( { model | currentScreen = Messages }, Cmd.none )

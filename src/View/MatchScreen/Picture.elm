@@ -37,7 +37,6 @@ view model =
                     , height (px 30)
                     , Background.color (rgb 1 1 1)
                     , Border.rounded 100
-                    , Border.glow (rgb 0.8 0.8 0.8) 2
                     , alignBottom
                     , alignRight
                     , moveUp 30
@@ -54,7 +53,6 @@ view model =
                     , height (px 30)
                     , Background.color (rgb 1 1 1)
                     , Border.rounded 100
-                    , Border.glow (rgb 0.8 0.8 0.8) 2
                     , alignBottom
                     , alignRight
                     , moveUp 30

@@ -34,8 +34,7 @@ layout model =
         , centerX
         , centerY
         , Background.color Colors.background
-        , scrollbarY
-        , clipX
+        , clip
         ]
     <|
         row [ width (px 640), height fill ]

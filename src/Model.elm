@@ -1,4 +1,4 @@
-module Model exposing (BirdData, Flags, Model, init, initCardStyle)
+module Model exposing (BirdData, Flags, Model, Screen(..), init, initCardStyle)
 
 import Animation
 import Animation.Messenger
@@ -12,7 +12,13 @@ type alias Model =
     , topCardStyle : Animation.Messenger.State Message
     , showNextCard : Bool
     , detailedView : Bool
+    , currentScreen : Screen
     }
+
+
+type Screen
+    = Match
+    | Messages
 
 
 type alias BirdData =
@@ -38,6 +44,7 @@ init flags =
       , topCardStyle = initCardStyle
       , showNextCard = False
       , detailedView = False
+      , currentScreen = Match
       }
     , Cmd.none
     )

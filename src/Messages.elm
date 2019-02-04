@@ -11,3 +11,4 @@ type Message
     | BirdDismissalCompleted
     | DetailOpenClicked
     | DetailCloseClicked
+    | MessageScreenButtonClicked
