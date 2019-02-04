@@ -10,6 +10,7 @@ type alias Model =
     , likedBirds : List BirdData
     , dislikedBirds : List BirdData
     , topCardStyle : Animation.Messenger.State Message
+    , screenStyle : Animation.Messenger.State Message
     , showNextCard : Bool
     , detailedView : Bool
     , currentScreen : Screen
@@ -42,6 +43,7 @@ init flags =
       , likedBirds = []
       , dislikedBirds = []
       , topCardStyle = initCardStyle
+      , screenStyle = initScreenStyle
       , showNextCard = False
       , detailedView = False
       , currentScreen = Match
@@ -55,4 +57,11 @@ initCardStyle =
     Animation.style
         [ Animation.translate (Animation.px 0) (Animation.px 0)
         , Animation.rotate (Animation.deg 0)
+        ]
+
+
+initScreenStyle : Animation.Messenger.State Message
+initScreenStyle =
+    Animation.style
+        [ Animation.translate (Animation.px 0) (Animation.px 0)
         ]

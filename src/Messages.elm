@@ -5,6 +5,7 @@ import Animation
 
 type Message
     = AnimateTopCard Animation.Msg
+    | AnimateScreen Animation.Msg
     | BirdDismissed
     | BirdLiked
     | BirdLikeCompleted

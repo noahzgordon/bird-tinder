@@ -37,5 +37,12 @@ layout model =
         , clip
         ]
     <|
-        row [ width (px 640), height fill ]
+        row
+            (List.concat
+                [ [ width (px 640)
+                  , height fill
+                  ]
+                , List.map htmlAttribute (Animation.render model.screenStyle)
+                ]
+            )
             [ View.MatchScreen.view model ]

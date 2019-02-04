@@ -7,4 +7,7 @@ import Model exposing (Model)
 
 subscriptions : Model -> Sub Message
 subscriptions model =
-    Animation.subscription AnimateTopCard [ model.topCardStyle ]
+    Sub.batch
+        [ Animation.subscription AnimateTopCard [ model.topCardStyle ]
+        , Animation.subscription AnimateScreen [ model.screenStyle ]
+        ]

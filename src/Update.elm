@@ -16,6 +16,13 @@ update message model =
             in
             ( { model | topCardStyle = newStyle }, cmds )
 
+        AnimateScreen animateMsg ->
+            let
+                ( newStyle, cmds ) =
+                    Animation.Messenger.update animateMsg model.screenStyle
+            in
+            ( { model | screenStyle = newStyle }, cmds )
+
         BirdDismissed ->
             ( { model
                 | topCardStyle =
@@ -55,7 +62,7 @@ update message model =
                 top :: rest ->
                     ( { model
                         | remainingBirds = rest
-                        , likedBirds = Debug.log "bird" top :: model.likedBirds
+                        , likedBirds = top :: model.likedBirds
                         , showNextCard = False
                         , topCardStyle = Model.initCardStyle
                       }
@@ -87,4 +94,14 @@ update message model =
             ( { model | detailedView = False }, Cmd.none )
 
         MessageScreenButtonClicked ->
-            ( { model | currentScreen = Messages }, Cmd.none )
+            ( { model
+                | currentScreen = Messages
+                , screenStyle =
+                    Animation.interrupt
+                        [ Animation.to
+                            [ Animation.translate (Animation.px -320) (Animation.px 0) ]
+                        ]
+                        model.screenStyle
+              }
+            , Cmd.none
+            )
