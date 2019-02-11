@@ -1,6 +1,7 @@
 module Messages exposing (Message(..))
 
 import Animation
+import Time exposing (Posix)
 
 
 type Message
@@ -13,3 +14,5 @@ type Message
     | DetailOpenClicked
     | DetailCloseClicked
     | MessageScreenButtonClicked
+    | MatchScreenButtonClicked
+    | CurrentTimeReceived Posix

@@ -1,4 +1,4 @@
-module View.MatchScreen.Header exposing (view)
+module View.MessageScreen.Header exposing (view)
 
 import Element exposing (..)
 import Element.Background as Background
@@ -14,13 +14,7 @@ view model =
     row
         [ width fill
         , height
-            (if model.detailedView then
-                px 0
-
-             else
-                px 40
-            )
-        , spaceEvenly
+            (px 40)
         ]
         [ Input.button
             [ width (px 30)
@@ -30,27 +24,19 @@ view model =
             , moveRight 20
             , moveDown 5
             ]
-            { onPress = Nothing
-            , label = Icons.profile
-            }
-        , Input.button
-            [ width (px 30)
-            , height (px 30)
-            , centerY
-            , centerX
-            ]
-            { onPress = Nothing
+            { onPress = Just MatchScreenButtonClicked
             , label = Icons.pecker
             }
         , Input.button
             [ width (px 30)
             , height (px 30)
             , centerY
-            , alignRight
-            , moveLeft 20
-            , moveDown 5
+            , centerX
+            , moveLeft 12
+            , moveDown 10
+            , scale 1.3
             ]
-            { onPress = Just MessageScreenButtonClicked
+            { onPress = Nothing
             , label = Icons.message
             }
         ]

@@ -2,13 +2,37 @@ module Update exposing (update)
 
 import Animation
 import Animation.Messenger
+import List.Extra as List
 import Messages exposing (..)
 import Model exposing (..)
+import Time
 
 
 update : Message -> Model -> ( Model, Cmd Message )
 update message model =
     case message of
+        CurrentTimeReceived time ->
+            let
+                modelWithUpdatedTime =
+                    { model | currentTime = time }
+            in
+            if Time.posixToMillis time - Time.posixToMillis model.lastMessageTime > 5000 then
+                case model.messageQueue of
+                    [] ->
+                        ( modelWithUpdatedTime, Cmd.none )
+
+                    top :: rest ->
+                        ( { modelWithUpdatedTime
+                            | messageQueue = rest
+                            , messages = top :: model.messages
+                            , lastMessageTime = time
+                          }
+                        , Cmd.none
+                        )
+
+            else
+                ( modelWithUpdatedTime, Cmd.none )
+
         AnimateTopCard animateMsg ->
             let
                 ( newStyle, cmds ) =
@@ -70,7 +94,7 @@ update message model =
                 top :: rest ->
                     ( { model
                         | remainingBirds = rest
-                        , likedBirds = top :: model.likedBirds
+                        , dislikedBirds = top :: model.likedBirds
                         , topCardStyle = Model.initCardStyle
                         , cardAnimating = False
                       }
@@ -83,11 +107,19 @@ update message model =
         BirdLikeCompleted ->
             case model.remainingBirds of
                 top :: rest ->
+                    let
+                        birdMessages =
+                            top.message
+                                |> String.split "//"
+                                |> List.filter (not << String.isEmpty)
+                                |> List.map (\s -> BirdMessage top.name s)
+                    in
                     ( { model
                         | remainingBirds = rest
-                        , dislikedBirds = top :: model.likedBirds
+                        , likedBirds = top :: model.likedBirds
                         , topCardStyle = Model.initCardStyle
                         , cardAnimating = False
+                        , messageQueue = List.interweave model.messageQueue birdMessages
                       }
                     , Cmd.none
                     )
@@ -108,6 +140,19 @@ update message model =
                     Animation.interrupt
                         [ Animation.to
                             [ Animation.translate (Animation.px -320) (Animation.px 0) ]
+                        ]
+                        model.screenStyle
+              }
+            , Cmd.none
+            )
+
+        MatchScreenButtonClicked ->
+            ( { model
+                | currentScreen = Messages
+                , screenStyle =
+                    Animation.interrupt
+                        [ Animation.to
+                            [ Animation.translate (Animation.px 0) (Animation.px 0) ]
                         ]
                         model.screenStyle
               }

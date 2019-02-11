@@ -16,6 +16,7 @@ import Model exposing (BirdData, Model)
 import Svg exposing (foreignObject, svg)
 import Svg.Attributes exposing (xmlSpace)
 import View.MatchScreen
+import View.MessageScreen
 
 
 view : Model -> Browser.Document Message
@@ -45,4 +46,6 @@ layout model =
                 , List.map htmlAttribute (Animation.render model.screenStyle)
                 ]
             )
-            [ View.MatchScreen.view model ]
+            [ View.MatchScreen.view model
+            , View.MessageScreen.view model
+            ]

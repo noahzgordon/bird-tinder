@@ -20,7 +20,7 @@ view model =
         [ width fill
         , height
             (if model.detailedView then
-                px 340
+                px 300
 
              else
                 fill

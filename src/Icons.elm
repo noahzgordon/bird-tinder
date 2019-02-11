@@ -98,5 +98,13 @@ profile =
 
 pecker : Element msg
 pecker =
-    el [ Font.size 36 ] <|
+    el
+        [ Font.size 36
+        , Font.family
+            [ Font.typeface "Comic Sans MS"
+            , Font.typeface "cursive"
+            , Font.sansSerif
+            ]
+        ]
+    <|
         Element.text "P"

@@ -1,8 +1,9 @@
-module Model exposing (BirdData, Flags, Model, Screen(..), init, initCardStyle)
+module Model exposing (BirdData, BirdMessage, Flags, Model, Screen(..), init, initCardStyle)
 
 import Animation
 import Animation.Messenger
 import Messages exposing (Message)
+import Time exposing (Posix)
 
 
 type alias Model =
@@ -14,6 +15,10 @@ type alias Model =
     , detailedView : Bool
     , currentScreen : Screen
     , cardAnimating : Bool
+    , messageQueue : List BirdMessage
+    , messages : List BirdMessage
+    , currentTime : Posix
+    , lastMessageTime : Posix
     }
 
 
@@ -28,7 +33,13 @@ type alias BirdData =
     , description : String
     , distance : String
     , image : String
-    , message : Maybe String
+    , message : String
+    }
+
+
+type alias BirdMessage =
+    { birdName : String
+    , message : String
     }
 
 
@@ -47,6 +58,10 @@ init flags =
       , detailedView = False
       , currentScreen = Match
       , cardAnimating = False
+      , messageQueue = []
+      , messages = []
+      , currentTime = Time.millisToPosix 0
+      , lastMessageTime = Time.millisToPosix 0
       }
     , Cmd.none
     )
