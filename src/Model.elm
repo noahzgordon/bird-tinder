@@ -1,4 +1,4 @@
-module Model exposing (BirdData, BirdMessage, Flags, Model, Screen(..), init, initCardStyle)
+module Model exposing (BirdData, BirdMessage, BirdMessageHistory, Flags, Model, Screen(..), init, initCardStyle)
 
 import Animation
 import Animation.Messenger
@@ -16,7 +16,7 @@ type alias Model =
     , currentScreen : Screen
     , cardAnimating : Bool
     , messageQueue : List BirdMessage
-    , messages : List BirdMessage
+    , messages : List BirdMessageHistory
     , currentTime : Posix
     , lastMessageTime : Posix
     }
@@ -40,6 +40,12 @@ type alias BirdData =
 type alias BirdMessage =
     { birdName : String
     , message : String
+    }
+
+
+type alias BirdMessageHistory =
+    { birdName : String
+    , messages : List String
     }
 
 

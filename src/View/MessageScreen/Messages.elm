@@ -7,34 +7,40 @@ import Element.Border as Border
 import Element.Font as Font
 import Element.Input as Input
 import Messages exposing (..)
-import Model exposing (BirdData, BirdMessage, Model)
+import Model exposing (BirdData, BirdMessage, BirdMessageHistory, Model)
 
 
 view : Model -> Element Message
 view model =
     column
-        [ paddingXY 20 30 ]
-        ([ el [ Font.color Colors.red, Font.bold ]
+        [ paddingXY 20 30, width fill ]
+        [ el [ Font.color Colors.red, Font.bold ]
             (text "Messages")
-         ]
-            ++ drawMessages model
-        )
+        , drawMessages model
+        ]
 
 
-drawMessages : Model -> List (Element Message)
+drawMessages : Model -> Element Message
 drawMessages model =
     case model.messages of
         [] ->
-            [ text "You don't have any messages yet!" ]
+            paragraph [ paddingXY 0 20 ] [ text "You don't have any messages yet!" ]
 
         messages ->
-            List.map drawMessage messages
+            column [ paddingXY 0 20 ] (List.map drawMessage messages)
 
 
-drawMessage : BirdMessage -> Element Message
-drawMessage { birdName, message } =
+drawMessage : BirdMessageHistory -> Element Message
+drawMessage { birdName, messages } =
     row []
         [ text birdName
         , text " // "
-        , text message
+        , text
+            (case List.head messages of
+                Nothing ->
+                    ""
+
+                Just m ->
+                    m
+            )
         ]

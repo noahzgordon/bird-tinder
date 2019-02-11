@@ -24,7 +24,7 @@ update message model =
                     top :: rest ->
                         ( { modelWithUpdatedTime
                             | messageQueue = rest
-                            , messages = top :: model.messages
+                            , messages = addToMessages top model.messages
                             , lastMessageTime = time
                           }
                         , Cmd.none
@@ -158,3 +158,13 @@ update message model =
               }
             , Cmd.none
             )
+
+
+addToMessages : BirdMessage -> List BirdMessageHistory -> List BirdMessageHistory
+addToMessages { birdName, message } histories =
+    case List.partition (\history -> history.birdName == birdName) histories of
+        ( [], _ ) ->
+            BirdMessageHistory birdName [ message ] :: histories
+
+        ( found :: _, rest ) ->
+            { found | messages = message :: found.messages } :: rest
