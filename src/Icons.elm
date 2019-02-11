@@ -1,6 +1,7 @@
-module Icons exposing (ex, heart, info, retract)
+module Icons exposing (ex, heart, info, message, pecker, profile, retract)
 
-import Element exposing (Element)
+import Element exposing (Element, el)
+import Element.Font as Font
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
 
@@ -65,3 +66,37 @@ retract =
                     []
                 ]
             ]
+
+
+message : Element msg
+message =
+    Element.html <|
+        svg [ width "34px", height "34px", viewBox "0 0 34 29" ]
+            [ g [ stroke "none", strokeWidth "1" ]
+                [ Svg.path
+                    [ d "M16.3 20.2c0-4.6 4.4-8.5 10-8.5 1.3 0 2.6.3 3.8.7 0-6.6-6.7-12-14.8-12C7 .4.2 6 .2 12.7.2 17 3 21 7.2 23v4.5c0 .5.4.8 1 .5l6-3h1.5c.7 0 1.4 0 2-.2-1-1.4-1.4-3-1.4-4.6zm10-6c-4.2 0-7.6 2.6-7.6 6s3.4 6.2 7.5 6.2h.5l1 .4 1.6 1c.5 0 1 0 1-.6v-1.8c2-1 3.4-3 3.4-5.2 0-3.4-3.3-6-7.5-6z"
+                    , fill "#888"
+                    ]
+                    []
+                ]
+            ]
+
+
+profile : Element msg
+profile =
+    Element.html <|
+        svg [ width "22px", height "27px", viewBox "0 0 22 27" ]
+            [ g [ stroke "none", strokeWidth "1" ]
+                [ Svg.path
+                    [ d "M15 14.7c1.6-1.3 2.6-3.5 2.6-7.4 0-4-3.3-7.3-7.3-7.3S3 3.2 3 7.3c0 4 1 6.3 2.7 7.6C2.3 17-1 21 .2 23 2.7 27.7 19 28 21 23.2c.8-2.3-2.5-6.2-6-8.5"
+                    , fill "#888"
+                    ]
+                    []
+                ]
+            ]
+
+
+pecker : Element msg
+pecker =
+    el [ Font.size 36 ] <|
+        Element.text "P"

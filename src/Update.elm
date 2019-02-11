@@ -24,38 +24,46 @@ update message model =
             ( { model | screenStyle = newStyle }, cmds )
 
         BirdDismissed ->
-            ( { model
-                | topCardStyle =
-                    Animation.interrupt
-                        [ Animation.to
-                            [ Animation.translate (Animation.px -400) (Animation.px 0)
-                            , Animation.rotate (Animation.deg -20)
+            if model.cardAnimating then
+                ( model, Cmd.none )
+
+            else
+                ( { model
+                    | topCardStyle =
+                        Animation.interrupt
+                            [ Animation.to
+                                [ Animation.translate (Animation.px -400) (Animation.px 0)
+                                , Animation.rotate (Animation.deg -20)
+                                ]
+                            , Animation.Messenger.send BirdDismissalCompleted
                             ]
-                        , Animation.Messenger.send BirdDismissalCompleted
-                        ]
-                        model.topCardStyle
-                , showNextCard = True
-                , detailedView = False
-              }
-            , Cmd.none
-            )
+                            model.topCardStyle
+                    , detailedView = False
+                    , cardAnimating = True
+                  }
+                , Cmd.none
+                )
 
         BirdLiked ->
-            ( { model
-                | topCardStyle =
-                    Animation.interrupt
-                        [ Animation.to
-                            [ Animation.translate (Animation.px 400) (Animation.px 0)
-                            , Animation.rotate (Animation.deg 20)
+            if model.cardAnimating then
+                ( model, Cmd.none )
+
+            else
+                ( { model
+                    | topCardStyle =
+                        Animation.interrupt
+                            [ Animation.to
+                                [ Animation.translate (Animation.px 400) (Animation.px 0)
+                                , Animation.rotate (Animation.deg 20)
+                                ]
+                            , Animation.Messenger.send BirdLikeCompleted
                             ]
-                        , Animation.Messenger.send BirdLikeCompleted
-                        ]
-                        model.topCardStyle
-                , showNextCard = True
-                , detailedView = False
-              }
-            , Cmd.none
-            )
+                            model.topCardStyle
+                    , detailedView = False
+                    , cardAnimating = True
+                  }
+                , Cmd.none
+                )
 
         BirdDismissalCompleted ->
             case model.remainingBirds of
@@ -63,8 +71,8 @@ update message model =
                     ( { model
                         | remainingBirds = rest
                         , likedBirds = top :: model.likedBirds
-                        , showNextCard = False
                         , topCardStyle = Model.initCardStyle
+                        , cardAnimating = False
                       }
                     , Cmd.none
                     )
@@ -78,8 +86,8 @@ update message model =
                     ( { model
                         | remainingBirds = rest
                         , dislikedBirds = top :: model.likedBirds
-                        , showNextCard = False
                         , topCardStyle = Model.initCardStyle
+                        , cardAnimating = False
                       }
                     , Cmd.none
                     )

@@ -20,7 +20,7 @@ view model =
         [ width fill
         , height
             (if model.detailedView then
-                px 250
+                px 340
 
              else
                 fill
@@ -100,15 +100,22 @@ card showInfo bird htmlAttrs =
               , padding 10
               , behindContent
                     (el
-                        [ height fill
-                        , width fill
-                        , spacing 10
-                        , Background.image bird.image
-                        , Border.width 10
-                        , Border.color Colors.background
-                        , Border.rounded 20
-                        , Border.solid
-                        ]
+                        ([ height fill
+                         , width fill
+                         , spacing 10
+                         , Background.image bird.image
+                         ]
+                            ++ (if showInfo then
+                                    [ Border.width 10
+                                    , Border.solid
+                                    , Border.rounded 20
+                                    , Border.color Colors.background
+                                    ]
+
+                                else
+                                    []
+                               )
+                        )
                         none
                     )
               ]
