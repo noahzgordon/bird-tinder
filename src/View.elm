@@ -30,7 +30,7 @@ view model =
 
 layout : Model -> Element Message
 layout model =
-    el [ width fill, height fill ] <|
+    el [ width fill, height fill, Background.color Colors.gray ] <|
         el
             -- screen
             [ width (px <| round model.windowDimensions.width)
