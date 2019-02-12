@@ -33,8 +33,8 @@ layout model =
     el [ width fill, height fill ] <|
         el
             -- screen
-            [ width (px 320)
-            , height (px 480)
+            [ width (px <| round model.windowDimensions.width)
+            , height (px <| round model.windowDimensions.height)
             , centerX
             , centerY
             , Background.color Colors.background
@@ -43,9 +43,7 @@ layout model =
         <|
             row
                 (List.concat
-                    [ [ width (px 640)
-                      , height fill
-                      ]
+                    [ [ height fill ]
                     , List.map htmlAttribute (Animation.render model.screenStyle)
                     ]
                 )

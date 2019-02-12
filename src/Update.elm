@@ -37,6 +37,12 @@ update message model =
             else
                 ( modelWithUpdatedTime, Cmd.none )
 
+        WindowSizeInformationReceived width height ->
+            ( model
+                |> Model.setDimensions { width = toFloat width, height = toFloat height }
+            , Cmd.none
+            )
+
         AnimateTopCard animateMsg ->
             let
                 ( newStyle, cmds ) =
@@ -143,7 +149,7 @@ update message model =
                 , screenStyle =
                     Animation.interrupt
                         [ Animation.to
-                            [ Animation.translate (Animation.px -320) (Animation.px 0) ]
+                            [ Animation.translate (Animation.px (negate model.windowDimensions.width)) (Animation.px 0) ]
                         ]
                         model.screenStyle
               }
@@ -169,7 +175,7 @@ update message model =
                 , screenStyle =
                     Animation.interrupt
                         [ Animation.to
-                            [ Animation.translate (Animation.px -640) (Animation.px 0) ]
+                            [ Animation.translate (Animation.px (negate model.windowDimensions.width * 2)) (Animation.px 0) ]
                         ]
                         model.screenStyle
               }

@@ -17,7 +17,12 @@ import View.MessageScreen.Messages as Messages
 
 view : Model -> Element Message
 view model =
-    el [ width (px 320), height (px 480), scrollbarY, clipX ]
+    el
+        [ width (px <| round model.windowDimensions.width)
+        , height (px <| round model.windowDimensions.height)
+        , scrollbarY
+        , clipX
+        ]
         (el
             [ width fill, height fill ]
             (case model.currentScreen of

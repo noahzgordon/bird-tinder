@@ -19,3 +19,4 @@ type Message
     | MessageHistoryClicked BirdMessageHistory
     | CurrentTimeReceived Posix
     | TimeZoneReceived Time.Zone
+    | WindowSizeInformationReceived Int Int

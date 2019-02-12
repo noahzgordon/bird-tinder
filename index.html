@@ -13,7 +13,13 @@
         // last item is a dud
         birdCsv.data.length = birdCsv.data.length - 1;
         var app = Elm.Main.init({
-          flags: { birdData: birdCsv.data }
+          flags: {
+            birdData: birdCsv.data,
+            windowDimensions: {
+              width: window.innerWidth,
+              height: window.innerHeight
+            }
+          }
         });
       })
       .catch(err => {

@@ -10,7 +10,12 @@ import View.MatchScreen.Picture as Picture
 
 view : Model -> Element Message
 view model =
-    el [ width (px 320), height (px 480), scrollbarY, clipX ]
+    el
+        [ width (px <| round model.windowDimensions.width)
+        , height (px <| round model.windowDimensions.height)
+        , scrollbarY
+        , clipX
+        ]
         (column
             [ width fill, height fill ]
             [ Header.view model

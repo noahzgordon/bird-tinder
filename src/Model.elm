@@ -1,4 +1,4 @@
-module Model exposing (Flags, Model, Screen(..), init, initCardStyle)
+module Model exposing (Flags, Model, Screen(..), init, initCardStyle, setDimensions)
 
 import Animation
 import Animation.Messenger
@@ -22,6 +22,7 @@ type alias Model =
     , currentTime : Posix
     , lastMessageTime : Posix
     , timeZone : Time.Zone
+    , windowDimensions : Dimensions
     }
 
 
@@ -33,7 +34,12 @@ type Screen
 
 type alias Flags =
     { birdData : List BirdData
+    , windowDimensions : Dimensions
     }
+
+
+type alias Dimensions =
+    { width : Float, height : Float }
 
 
 init : Flags -> ( Model, Cmd Message )
@@ -51,9 +57,25 @@ init flags =
       , currentTime = Time.millisToPosix 0
       , lastMessageTime = Time.millisToPosix 0
       , timeZone = Time.utc
+      , windowDimensions = flags.windowDimensions
       }
+        |> setDimensions flags.windowDimensions
     , Time.here |> Task.perform TimeZoneReceived
     )
+
+
+setDimensions : Dimensions -> Model -> Model
+setDimensions windowDimensions model =
+    let
+        maxWidth =
+            windowDimensions.height * 2 / 3
+
+        newDimensions =
+            { width = min maxWidth windowDimensions.width
+            , height = windowDimensions.height
+            }
+    in
+    { model | windowDimensions = newDimensions }
 
 
 initCardStyle : Animation.Messenger.State Message
