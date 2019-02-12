@@ -18,8 +18,8 @@ import Time exposing (Posix, Zone, toHour, toMinute)
 view : Model -> Element Message
 view model =
     column
-        [ paddingXY 20 30, width fill ]
-        [ el [ Font.color Colors.red, Font.bold ]
+        [ paddingXY 10 30, width fill ]
+        [ el [ paddingXY 10 0, Font.color Colors.red, Font.bold ]
             (text "Messages")
         , drawMessages model
         ]
@@ -29,7 +29,7 @@ drawMessages : Model -> Element Message
 drawMessages model =
     case model.messages of
         [] ->
-            paragraph [ paddingXY 0 20 ] [ text "You don't have any messages yet!" ]
+            paragraph [ paddingXY 10 20 ] [ text "You don't have any messages yet!" ]
 
         messages ->
             column [ paddingXY 0 20, width fill ]
@@ -49,15 +49,15 @@ drawMessage model history =
                 , pointer
                 , mouseOver [ Background.color Colors.backgroundLowlight ]
                 , width fill
-                , height (px 100)
-                , paddingXY 0 10
+                , height (px 80)
+                , paddingXY 10 10
                 , spacing 10
                 , Border.solid
                 , Border.rounded 10
                 ]
                 [ el
-                    [ width (px 75)
-                    , height (px 75)
+                    [ width (px 60)
+                    , height (px 60)
                     , Background.image data.image
                     , Border.rounded 50
                     , Border.solid
