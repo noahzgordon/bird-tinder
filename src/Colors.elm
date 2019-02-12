@@ -1,4 +1,4 @@
-module Colors exposing (background, red)
+module Colors exposing (background, gray, lightGray, red)
 
 import Element exposing (rgb255)
 
@@ -9,3 +9,11 @@ background =
 
 red =
     rgb255 255 0 0
+
+
+gray =
+    rgb255 100 100 100
+
+
+lightGray =
+    rgb255 200 200 200

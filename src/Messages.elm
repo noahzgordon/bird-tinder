@@ -1,6 +1,7 @@
 module Messages exposing (Message(..))
 
 import Animation
+import BirdData exposing (BirdMessageHistory)
 import Time exposing (Posix)
 
 
@@ -15,4 +16,6 @@ type Message
     | DetailCloseClicked
     | MessageScreenButtonClicked
     | MatchScreenButtonClicked
+    | MessageHistoryClicked BirdMessageHistory
     | CurrentTimeReceived Posix
+    | TimeZoneReceived Time.Zone

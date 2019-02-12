@@ -1,6 +1,7 @@
 module View exposing (view)
 
 import Animation
+import BirdData exposing (BirdData)
 import Browser
 import Colors
 import Element exposing (..)
@@ -12,10 +13,11 @@ import Html
 import Html.Attributes exposing (class)
 import Icons
 import Messages exposing (Message(..))
-import Model exposing (BirdData, Model)
+import Model exposing (Model)
 import Svg exposing (foreignObject, svg)
 import Svg.Attributes exposing (xmlSpace)
 import View.MatchScreen
+import View.MessageHistory
 import View.MessageScreen
 
 
@@ -48,4 +50,5 @@ layout model =
             )
             [ View.MatchScreen.view model
             , View.MessageScreen.view model
+            , View.MessageHistory.view model
             ]

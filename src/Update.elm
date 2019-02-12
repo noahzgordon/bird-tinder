@@ -2,15 +2,19 @@ module Update exposing (update)
 
 import Animation
 import Animation.Messenger
+import BirdData exposing (..)
 import List.Extra as List
 import Messages exposing (..)
 import Model exposing (..)
-import Time
+import Time exposing (Posix)
 
 
 update : Message -> Model -> ( Model, Cmd Message )
 update message model =
     case message of
+        TimeZoneReceived zone ->
+            ( { model | timeZone = zone }, Cmd.none )
+
         CurrentTimeReceived time ->
             let
                 modelWithUpdatedTime =
@@ -24,7 +28,7 @@ update message model =
                     top :: rest ->
                         ( { modelWithUpdatedTime
                             | messageQueue = rest
-                            , messages = addToMessages top model.messages
+                            , messages = addToMessages time top model.messages
                             , lastMessageTime = time
                           }
                         , Cmd.none
@@ -148,7 +152,7 @@ update message model =
 
         MatchScreenButtonClicked ->
             ( { model
-                | currentScreen = Messages
+                | currentScreen = Match
                 , screenStyle =
                     Animation.interrupt
                         [ Animation.to
@@ -159,12 +163,32 @@ update message model =
             , Cmd.none
             )
 
+        MessageHistoryClicked history ->
+            ( { model
+                | currentScreen = MessageHistory history.birdName
+                , screenStyle =
+                    Animation.interrupt
+                        [ Animation.to
+                            [ Animation.translate (Animation.px -640) (Animation.px 0) ]
+                        ]
+                        model.screenStyle
+              }
+            , Cmd.none
+            )
 
-addToMessages : BirdMessage -> List BirdMessageHistory -> List BirdMessageHistory
-addToMessages { birdName, message } histories =
+
+addToMessages : Posix -> BirdMessage -> List BirdMessageHistory -> List BirdMessageHistory
+addToMessages time { birdName, message } histories =
+    let
+        newMessage =
+            { text = message
+            , unread = True
+            , timestamp = time
+            }
+    in
     case List.partition (\history -> history.birdName == birdName) histories of
         ( [], _ ) ->
-            BirdMessageHistory birdName [ message ] :: histories
+            BirdMessageHistory birdName [ newMessage ] :: histories
 
         ( found :: _, rest ) ->
-            { found | messages = message :: found.messages } :: rest
+            { found | messages = newMessage :: found.messages } :: rest

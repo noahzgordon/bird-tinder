@@ -1,8 +1,10 @@
-module Model exposing (BirdData, BirdMessage, BirdMessageHistory, Flags, Model, Screen(..), init, initCardStyle)
+module Model exposing (Flags, Model, Screen(..), init, initCardStyle)
 
 import Animation
 import Animation.Messenger
-import Messages exposing (Message)
+import BirdData exposing (..)
+import Messages exposing (..)
+import Task
 import Time exposing (Posix)
 
 
@@ -19,34 +21,14 @@ type alias Model =
     , messages : List BirdMessageHistory
     , currentTime : Posix
     , lastMessageTime : Posix
+    , timeZone : Time.Zone
     }
 
 
 type Screen
     = Match
     | Messages
-
-
-type alias BirdData =
-    { name : String
-    , location : String
-    , description : String
-    , distance : String
-    , image : String
-    , message : String
-    }
-
-
-type alias BirdMessage =
-    { birdName : String
-    , message : String
-    }
-
-
-type alias BirdMessageHistory =
-    { birdName : String
-    , messages : List String
-    }
+    | MessageHistory String
 
 
 type alias Flags =
@@ -68,8 +50,9 @@ init flags =
       , messages = []
       , currentTime = Time.millisToPosix 0
       , lastMessageTime = Time.millisToPosix 0
+      , timeZone = Time.utc
       }
-    , Cmd.none
+    , Time.here |> Task.perform TimeZoneReceived
     )
 
 

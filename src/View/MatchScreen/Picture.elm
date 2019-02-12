@@ -1,6 +1,7 @@
 module View.MatchScreen.Picture exposing (view)
 
 import Animation
+import BirdData exposing (BirdData)
 import Colors
 import Element exposing (..)
 import Element.Background as Background
@@ -11,7 +12,7 @@ import Html
 import Html.Attributes exposing (class)
 import Icons
 import Messages exposing (..)
-import Model exposing (BirdData, Model)
+import Model exposing (Model)
 
 
 view : Model -> Element Message
