@@ -72,7 +72,7 @@ drawHistory data history =
                 [ width fill
                 , height (px 20)
                 , centerX
-                , moveDown 10
+                , moveDown 15
                 , Font.center
                 , Font.size 12
                 , Font.color Colors.gray

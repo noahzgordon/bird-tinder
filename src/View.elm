@@ -30,25 +30,26 @@ view model =
 
 layout : Model -> Element Message
 layout model =
-    el
-        -- screen
-        [ width (px 320)
-        , height (px 480)
-        , centerX
-        , centerY
-        , Background.color Colors.background
-        , clip
-        ]
-    <|
-        row
-            (List.concat
-                [ [ width (px 640)
-                  , height fill
-                  ]
-                , List.map htmlAttribute (Animation.render model.screenStyle)
-                ]
-            )
-            [ View.MatchScreen.view model
-            , View.MessageScreen.view model
-            , View.MessageHistory.view model
+    el [ width fill, height fill ] <|
+        el
+            -- screen
+            [ width (px 320)
+            , height (px 480)
+            , centerX
+            , centerY
+            , Background.color Colors.background
+            , clip
             ]
+        <|
+            row
+                (List.concat
+                    [ [ width (px 640)
+                      , height fill
+                      ]
+                    , List.map htmlAttribute (Animation.render model.screenStyle)
+                    ]
+                )
+                [ View.MatchScreen.view model
+                , View.MessageScreen.view model
+                , View.MessageHistory.view model
+                ]
