@@ -75,9 +75,21 @@ view model =
 
                                 else if idx == List.length model.remainingBirds - 2 then
                                     [ Html.Attributes.class "next-card" ]
+                                        ++ (if model.cardAnimating then
+                                                []
+
+                                            else
+                                                [ Html.Attributes.style "opacity" "0" ]
+                                           )
 
                                 else
                                     [ Html.Attributes.class "other-card" ]
+                                        ++ (if model.cardAnimating then
+                                                []
+
+                                            else
+                                                [ Html.Attributes.style "opacity" "0" ]
+                                           )
                         in
                         Html.div htmlAttrs
                             [ Element.layoutWith
@@ -87,7 +99,12 @@ view model =
                             ]
                     )
                     (List.reverse model.remainingBirds)
-                    ++ [ Html.div [ Html.Attributes.class "no-more" ] [ Html.text "We can't find any more birds near you! Try again later." ] ]
+                    ++ (if List.length model.remainingBirds <= 1 then
+                            [ Html.div [ Html.Attributes.class "no-more" ] [ Html.text "We can't find any more birds near you! Try again later." ] ]
+
+                        else
+                            []
+                       )
         ]
 
 
