@@ -129,7 +129,21 @@ update message model =
             )
 
         MessageHistoryClicked history ->
-            ( Model.Animations.screenTransition (MessageHistory history.birdName) model
+            ( { model
+                | messages =
+                    model.messages
+                        |> List.map
+                            (\h ->
+                                if h.birdName == history.birdName then
+                                    { h
+                                        | messages = List.map (\m -> { m | unread = False }) h.messages
+                                    }
+
+                                else
+                                    h
+                            )
+              }
+                |> Model.Animations.screenTransition (MessageHistory history.birdName)
             , Cmd.none
             )
 

@@ -11,6 +11,14 @@ import Model.Types exposing (Model)
 
 view : Model -> Element Message
 view model =
+    let
+        totalUnreads =
+            model.messages
+                |> List.map .messages
+                |> List.concat
+                |> List.filter .unread
+                |> List.length
+    in
     row
         [ width fill
         , height
@@ -51,6 +59,11 @@ view model =
             , moveDown 5
             ]
             { onPress = Just MessageScreenButtonClicked
-            , label = Icons.message
+            , label =
+                if totalUnreads > 0 then
+                    Icons.messageWithUnreads totalUnreads
+
+                else
+                    Icons.message
             }
         ]

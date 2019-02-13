@@ -28,19 +28,19 @@ initIntroTitleStyle =
         |> Animation.interrupt
             [ Animation.toWith
                 (Animation.easing
-                    { duration = 2000
+                    { duration = 1000
                     , ease = (*) 1
                     }
                 )
                 [ Animation.scale 1.2, Animation.rotate (Animation.deg -10) ]
             , Animation.toWith
                 (Animation.easing
-                    { duration = 1000
+                    { duration = 500
                     , ease = (*) 1
                     }
                 )
                 [ Animation.scale 1, Animation.rotate (Animation.deg 0) ]
-            , Animation.wait (millisToPosix 2000)
+            , Animation.wait (millisToPosix 1000)
             , Animation.Messenger.send IntroAnimationCompleted
             ]
 

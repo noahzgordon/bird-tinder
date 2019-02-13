@@ -1,6 +1,9 @@
-module Icons exposing (ex, heart, info, message, pecker, profile, retract)
+module Icons exposing (ex, heart, info, message, messageWithUnreads, pecker, profile, retract)
 
-import Element exposing (Element, el)
+import Colors
+import Element exposing (Element, el, inFront, px)
+import Element.Background as Background
+import Element.Border as Border
 import Element.Font as Font
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
@@ -80,6 +83,29 @@ message =
                     []
                 ]
             ]
+
+
+messageWithUnreads : Int -> Element msg
+messageWithUnreads num =
+    el
+        [ inFront <|
+            el
+                [ Element.width (px 15)
+                , Element.height (px 15)
+                , Element.alignBottom
+                , Element.moveUp 3
+                , Element.moveLeft 3
+                , Border.solid
+                , Border.rounded 10
+                , Background.color Colors.red
+                , Font.color Colors.white
+                , Font.size 10
+                ]
+            <|
+                el [ Element.centerY, Element.centerX ] <|
+                    (Element.text <| String.fromInt num)
+        ]
+        message
 
 
 profile : Element msg
