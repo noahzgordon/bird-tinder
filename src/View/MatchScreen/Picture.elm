@@ -21,7 +21,7 @@ view model =
         [ width fill
         , height
             (if model.detailedView then
-                px 300
+                px <| round <| model.windowDimensions.height * 2 / 3
 
              else
                 fill
