@@ -2,11 +2,14 @@ module Update exposing (update)
 
 import Animation
 import Animation.Messenger
-import BirdData exposing (..)
 import List.Extra as List
 import Messages exposing (..)
 import Model exposing (..)
+import Model.Animations
+import Model.Types exposing (..)
+import Model.Types.BirdData exposing (..)
 import Time exposing (Posix)
+import Update.Animations
 
 
 update : Message -> Model -> ( Model, Cmd Message )
@@ -43,38 +46,16 @@ update message model =
             , Cmd.none
             )
 
-        AnimateTopCard animateMsg ->
-            let
-                ( newStyle, cmds ) =
-                    Animation.Messenger.update animateMsg model.topCardStyle
-            in
-            ( { model | topCardStyle = newStyle }, cmds )
-
-        AnimateScreen animateMsg ->
-            let
-                ( newStyle, cmds ) =
-                    Animation.Messenger.update animateMsg model.screenStyle
-            in
-            ( { model | screenStyle = newStyle }, cmds )
+        Animate msg ->
+            Update.Animations.update msg model
 
         BirdDismissed ->
             if model.cardAnimating then
                 ( model, Cmd.none )
 
             else
-                ( { model
-                    | topCardStyle =
-                        Animation.interrupt
-                            [ Animation.to
-                                [ Animation.translate (Animation.px -400) (Animation.px 0)
-                                , Animation.rotate (Animation.deg -20)
-                                ]
-                            , Animation.Messenger.send BirdDismissalCompleted
-                            ]
-                            model.topCardStyle
-                    , detailedView = False
-                    , cardAnimating = True
-                  }
+                ( { model | detailedView = False }
+                    |> Model.Animations.animateLeftSwipe
                 , Cmd.none
                 )
 
@@ -83,19 +64,8 @@ update message model =
                 ( model, Cmd.none )
 
             else
-                ( { model
-                    | topCardStyle =
-                        Animation.interrupt
-                            [ Animation.to
-                                [ Animation.translate (Animation.px 400) (Animation.px 0)
-                                , Animation.rotate (Animation.deg 20)
-                                ]
-                            , Animation.Messenger.send BirdLikeCompleted
-                            ]
-                            model.topCardStyle
-                    , detailedView = False
-                    , cardAnimating = True
-                  }
+                ( { model | detailedView = False }
+                    |> Model.Animations.animateRightSwipe
                 , Cmd.none
                 )
 
@@ -105,7 +75,7 @@ update message model =
                     ( { model
                         | remainingBirds = rest
                         , dislikedBirds = top :: model.likedBirds
-                        , topCardStyle = Model.initCardStyle
+                        , topCardStyle = Model.Animations.initCardStyle
                         , cardAnimating = False
                       }
                     , Cmd.none
@@ -127,7 +97,7 @@ update message model =
                     ( { model
                         | remainingBirds = rest
                         , likedBirds = top :: model.likedBirds
-                        , topCardStyle = Model.initCardStyle
+                        , topCardStyle = Model.Animations.initCardStyle
                         , cardAnimating = False
                         , messageQueue = List.interweave model.messageQueue birdMessages
                       }

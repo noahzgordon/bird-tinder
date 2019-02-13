@@ -1,7 +1,7 @@
 module View exposing (view)
 
 import Animation
-import BirdData exposing (BirdData)
+import Model.Types.BirdData exposing (BirdData)
 import Browser
 import Colors
 import Element exposing (..)
@@ -13,7 +13,7 @@ import Html
 import Html.Attributes exposing (class)
 import Icons
 import Messages exposing (Message(..))
-import Model exposing (Model)
+import Model.Types exposing (Model)
 import Svg exposing (foreignObject, svg)
 import Svg.Attributes exposing (xmlSpace)
 import View.MatchScreen

@@ -6,7 +6,7 @@ import Element.Border as Border
 import Element.Input as Input
 import Icons
 import Messages exposing (..)
-import Model exposing (Model)
+import Model.Types exposing (Model)
 
 
 view : Model -> Element Message

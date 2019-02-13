@@ -1,6 +1,6 @@
 module View.MessageScreen.Messages exposing (view)
 
-import BirdData exposing (..)
+import Model.Types.BirdData exposing (..)
 import Colors
 import DateFormat
 import Element exposing (..)
@@ -11,7 +11,7 @@ import Element.Font as Font
 import Element.Input as Input
 import List.Extra as List
 import Messages exposing (..)
-import Model exposing (Model)
+import Model.Types exposing (Model)
 import Time exposing (Posix, Zone, toHour, toMinute)
 
 

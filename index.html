@@ -7,7 +7,7 @@
   </head>
   <body>
     <script type="text/javascript">
-      fetch('https://s3.amazonaws.com/bird-tinder/birds.csv')
+      fetch('./birds.csv')
       .then(resp => resp.text())
       .then(csvString => {
         var birdCsv = Papa.parse(csvString, { header: true });

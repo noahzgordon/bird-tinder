@@ -1,13 +1,17 @@
-module Messages exposing (Message(..))
+module Messages exposing (AnimationMessage(..), Message(..))
 
 import Animation
-import BirdData exposing (BirdMessageHistory)
+import Model.Types.BirdData exposing (BirdMessageHistory)
 import Time exposing (Posix)
 
 
+type AnimationMessage
+    = TopCard Animation.Msg
+    | Screen Animation.Msg
+
+
 type Message
-    = AnimateTopCard Animation.Msg
-    | AnimateScreen Animation.Msg
+    = Animate AnimationMessage
     | BirdDismissed
     | BirdLiked
     | BirdLikeCompleted

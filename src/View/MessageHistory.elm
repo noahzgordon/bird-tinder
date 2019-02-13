@@ -1,6 +1,6 @@
 module View.MessageHistory exposing (view)
 
-import BirdData exposing (..)
+import Model.Types.BirdData exposing (..)
 import Colors
 import Element exposing (..)
 import Element.Background as Background
@@ -11,6 +11,7 @@ import Icons
 import List.Extra as List
 import Messages exposing (..)
 import Model exposing (..)
+import Model.Types exposing (..)
 import View.MessageScreen.Header as Header
 import View.MessageScreen.Messages as Messages
 

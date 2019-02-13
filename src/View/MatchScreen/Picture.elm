@@ -1,7 +1,6 @@
 module View.MatchScreen.Picture exposing (view)
 
 import Animation
-import BirdData exposing (BirdData)
 import Colors
 import Element exposing (..)
 import Element.Background as Background
@@ -12,7 +11,8 @@ import Html
 import Html.Attributes exposing (class)
 import Icons
 import Messages exposing (..)
-import Model exposing (Model)
+import Model.Types exposing (Model)
+import Model.Types.BirdData exposing (BirdData)
 
 
 view : Model -> Element Message
@@ -82,8 +82,8 @@ view model =
                         Html.div htmlAttrs
                             [ Element.layoutWith
                                 { options = [ noStaticStyleSheet ] }
-                                []
-                                (card (not model.detailedView) bird [])
+                                [ clip ]
+                                (card model bird [])
                             ]
                     )
                     (List.reverse model.remainingBirds)
@@ -91,39 +91,29 @@ view model =
         ]
 
 
-card : Bool -> BirdData -> List (Attribute Message) -> Element Message
-card showInfo bird htmlAttrs =
+card : Model -> BirdData -> List (Attribute Message) -> Element Message
+card { detailedView } bird htmlAttrs =
     el
         (List.concat
             [ htmlAttrs
             , [ width fill
               , height fill
               , padding 10
-              , behindContent
-                    (el
-                        ([ height fill
-                         , width fill
-                         , spacing 10
-                         , Background.image bird.image
-                         ]
-                            ++ (if showInfo then
-                                    [ Border.width 10
-                                    , Border.solid
-                                    , Border.rounded 20
-                                    , Border.color Colors.background
-                                    ]
-
-                                else
-                                    []
-                               )
-                        )
-                        none
-                    )
+              , behindContent <|
+                    el [ padding 10, height fill, width fill ] <|
+                        el
+                            [ height fill
+                            , width fill
+                            , padding 10
+                            , Background.image bird.image
+                            , Border.rounded 20
+                            ]
+                            none
               ]
             ]
         )
     <|
-        if showInfo then
+        if not detailedView then
             column
                 [ alignBottom
                 , Font.color (rgb 1 1 1)

@@ -2,7 +2,8 @@ module Main exposing (main)
 
 import Browser
 import Messages exposing (Message)
-import Model exposing (Flags, Model, init)
+import Model exposing (init)
+import Model.Types exposing (..)
 import Subscriptions exposing (subscriptions)
 import Update exposing (update)
 import View exposing (view)

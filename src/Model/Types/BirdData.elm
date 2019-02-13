@@ -1,4 +1,4 @@
-module BirdData exposing (BirdData, BirdMessage, BirdMessageHistory, SentBirdMessage)
+module Model.Types.BirdData exposing (BirdData, BirdMessage, BirdMessageHistory, SentBirdMessage)
 
 import Time exposing (Posix)
 

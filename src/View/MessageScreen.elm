@@ -2,7 +2,7 @@ module View.MessageScreen exposing (view)
 
 import Element exposing (..)
 import Messages exposing (Message)
-import Model exposing (Model)
+import Model.Types exposing (Model)
 import View.MessageScreen.Header as Header
 import View.MessageScreen.Messages as Messages
 
