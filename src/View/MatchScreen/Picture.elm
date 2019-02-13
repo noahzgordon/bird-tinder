@@ -100,13 +100,29 @@ card { detailedView } bird htmlAttrs =
               , height fill
               , padding 10
               , behindContent <|
-                    el [ padding 10, height fill, width fill ] <|
+                    el
+                        [ padding
+                            (if detailedView then
+                                0
+
+                             else
+                                10
+                            )
+                        , height fill
+                        , width fill
+                        ]
+                    <|
                         el
                             [ height fill
                             , width fill
-                            , padding 10
                             , Background.image bird.image
-                            , Border.rounded 20
+                            , Border.rounded
+                                (if detailedView then
+                                    0
+
+                                 else
+                                    20
+                                )
                             ]
                             none
               ]
