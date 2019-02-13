@@ -16,17 +16,17 @@ view model =
         , height
             (px 40)
         ]
-        [ Input.button
-            [ width (px 30)
-            , height (px 30)
-            , centerY
-            , alignLeft
-            , moveRight 20
-            , moveDown 5
-            ]
-            { onPress = Just MatchScreenButtonClicked
-            , label = Icons.pecker
-            }
+        [ el [ width (px 70), height (px 30), centerY, alignLeft ]
+            (Input.button
+                [ width (px 30)
+                , height fill
+                , centerX
+                , moveDown 5
+                ]
+                { onPress = Just MatchScreenButtonClicked
+                , label = Icons.pecker
+                }
+            )
         , Input.button
             [ width (px 30)
             , height (px 30)
