@@ -26,3 +26,4 @@ type Message
     | CurrentTimeReceived Posix
     | TimeZoneReceived Time.Zone
     | WindowSizeInformationReceived Int Int
+    | ScreenClicked

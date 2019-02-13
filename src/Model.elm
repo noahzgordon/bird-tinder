@@ -27,6 +27,7 @@ init flags =
       , lastMessageTime = Time.millisToPosix 0
       , timeZone = Time.utc
       , windowDimensions = flags.windowDimensions
+      , matchNotification = Nothing
       }
         |> setDimensions flags.windowDimensions
     , Time.here |> Task.perform TimeZoneReceived

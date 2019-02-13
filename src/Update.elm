@@ -100,6 +100,12 @@ update message model =
                         , topCardStyle = Model.Animations.initCardStyle
                         , cardAnimating = False
                         , messageQueue = List.interweave model.messageQueue birdMessages
+                        , matchNotification =
+                            if List.isEmpty birdMessages then
+                                Nothing
+
+                            else
+                                Just top
                       }
                     , Cmd.none
                     )
@@ -144,6 +150,11 @@ update message model =
                             )
               }
                 |> Model.Animations.screenTransition (MessageHistory history.birdName)
+            , Cmd.none
+            )
+
+        ScreenClicked ->
+            ( { model | matchNotification = Nothing }
             , Cmd.none
             )
 

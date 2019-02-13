@@ -22,6 +22,7 @@ type alias Model =
     , lastMessageTime : Posix
     , timeZone : Time.Zone
     , windowDimensions : Dimensions
+    , matchNotification : Maybe BirdData
     }
 
 

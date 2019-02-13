@@ -1,4 +1,4 @@
-module Colors exposing (background, backgroundLowlight, gray, lightGray, red, transparent, white)
+module Colors exposing (background, backgroundLowlight, gray, lightGray, red, transBlack, transparent, white)
 
 import Element exposing (rgb255, rgba255)
 
@@ -29,3 +29,7 @@ transparent =
 
 white =
     rgb255 255 255 255
+
+
+transBlack =
+    rgba255 0 0 0 0.8
