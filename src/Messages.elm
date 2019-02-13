@@ -8,10 +8,12 @@ import Time exposing (Posix)
 type AnimationMessage
     = TopCard Animation.Msg
     | Screen Animation.Msg
+    | IntroTitle Animation.Msg
 
 
 type Message
     = Animate AnimationMessage
+    | IntroAnimationCompleted
     | BirdDismissed
     | BirdLiked
     | BirdLikeCompleted

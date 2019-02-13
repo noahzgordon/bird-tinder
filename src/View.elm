@@ -1,7 +1,6 @@
 module View exposing (view)
 
 import Animation
-import Model.Types.BirdData exposing (BirdData)
 import Browser
 import Colors
 import Element exposing (..)
@@ -14,8 +13,10 @@ import Html.Attributes exposing (class)
 import Icons
 import Messages exposing (Message(..))
 import Model.Types exposing (Model)
+import Model.Types.BirdData exposing (BirdData)
 import Svg exposing (foreignObject, svg)
 import Svg.Attributes exposing (xmlSpace)
+import View.IntroScreen
 import View.MatchScreen
 import View.MessageHistory
 import View.MessageScreen
@@ -41,13 +42,19 @@ layout model =
             , clip
             ]
         <|
-            row
+            el
                 (List.concat
                     [ [ height fill ]
                     , List.map htmlAttribute (Animation.render model.screenStyle)
                     ]
                 )
-                [ View.MatchScreen.view model
-                , View.MessageScreen.view model
-                , View.MessageHistory.view model
-                ]
+            <|
+                column []
+                    [ row []
+                        [ View.IntroScreen.view model ]
+                    , row []
+                        [ View.MatchScreen.view model
+                        , View.MessageScreen.view model
+                        , View.MessageHistory.view model
+                        ]
+                    ]

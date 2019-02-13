@@ -12,6 +12,7 @@ type alias Model =
     , dislikedBirds : List BirdData
     , topCardStyle : Animation.Messenger.State Message
     , screenStyle : Animation.Messenger.State Message
+    , introTitleStyle : Animation.Messenger.State Message
     , detailedView : Bool
     , currentScreen : Screen
     , cardAnimating : Bool
@@ -25,7 +26,8 @@ type alias Model =
 
 
 type Screen
-    = Match
+    = Intro
+    | Match
     | Messages
     | MessageHistory String
 

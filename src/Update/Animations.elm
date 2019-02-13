@@ -21,3 +21,10 @@ update message model =
                     Animation.Messenger.update animateMsg model.screenStyle
             in
             ( { model | screenStyle = newStyle }, cmds )
+
+        IntroTitle animateMsg ->
+            let
+                ( newStyle, cmds ) =
+                    Animation.Messenger.update animateMsg model.introTitleStyle
+            in
+            ( { model | introTitleStyle = newStyle }, cmds )

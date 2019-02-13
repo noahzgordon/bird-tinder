@@ -113,42 +113,23 @@ update message model =
         DetailCloseClicked ->
             ( { model | detailedView = False }, Cmd.none )
 
+        IntroAnimationCompleted ->
+            ( Model.Animations.screenTransition Match model
+            , Cmd.none
+            )
+
         MessageScreenButtonClicked ->
-            ( { model
-                | currentScreen = Messages
-                , screenStyle =
-                    Animation.interrupt
-                        [ Animation.to
-                            [ Animation.translate (Animation.px (negate model.windowDimensions.width)) (Animation.px 0) ]
-                        ]
-                        model.screenStyle
-              }
+            ( Model.Animations.screenTransition Messages model
             , Cmd.none
             )
 
         MatchScreenButtonClicked ->
-            ( { model
-                | currentScreen = Match
-                , screenStyle =
-                    Animation.interrupt
-                        [ Animation.to
-                            [ Animation.translate (Animation.px 0) (Animation.px 0) ]
-                        ]
-                        model.screenStyle
-              }
+            ( Model.Animations.screenTransition Match model
             , Cmd.none
             )
 
         MessageHistoryClicked history ->
-            ( { model
-                | currentScreen = MessageHistory history.birdName
-                , screenStyle =
-                    Animation.interrupt
-                        [ Animation.to
-                            [ Animation.translate (Animation.px (negate model.windowDimensions.width * 2)) (Animation.px 0) ]
-                        ]
-                        model.screenStyle
-              }
+            ( Model.Animations.screenTransition (MessageHistory history.birdName) model
             , Cmd.none
             )
 

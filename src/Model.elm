@@ -3,7 +3,7 @@ module Model exposing (init, setDimensions)
 import Animation
 import Animation.Messenger
 import Messages exposing (..)
-import Model.Animations exposing (initCardStyle, initScreenStyle)
+import Model.Animations exposing (initCardStyle, initIntroTitleStyle, initScreenStyle)
 import Model.Types exposing (..)
 import Model.Types.BirdData exposing (..)
 import Task
@@ -17,8 +17,9 @@ init flags =
       , dislikedBirds = []
       , topCardStyle = initCardStyle
       , screenStyle = initScreenStyle
+      , introTitleStyle = initIntroTitleStyle
       , detailedView = False
-      , currentScreen = Match
+      , currentScreen = Intro
       , cardAnimating = False
       , messageQueue = []
       , messages = []
