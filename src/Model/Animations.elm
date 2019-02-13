@@ -40,7 +40,7 @@ initIntroTitleStyle =
                     }
                 )
                 [ Animation.scale 1, Animation.rotate (Animation.deg 0) ]
-            , Animation.wait (millisToPosix 5000)
+            , Animation.wait (millisToPosix 2000)
             , Animation.Messenger.send IntroAnimationCompleted
             ]
 
