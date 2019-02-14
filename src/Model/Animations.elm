@@ -1,4 +1,4 @@
-module Model.Animations exposing (animateLeftSwipe, animateRightSwipe, initCardStyle, initIntroTitleStyle, initScreenStyle, screenTransition, swipeAnimation)
+module Model.Animations exposing (animateLeftSwipe, animateMatch, animateRightSwipe, initCardStyle, initIntroTitleStyle, initMatchStyle, initScreenStyle, screenTransition, swipeAnimation)
 
 import Animation
 import Animation.Messenger
@@ -21,6 +21,11 @@ initScreenStyle =
     Animation.style
         [ Animation.translate (Animation.px 0) (Animation.px 0)
         ]
+
+
+initMatchStyle : Animation.Messenger.State Message
+initMatchStyle =
+    Animation.style [ Animation.scale 0 ]
 
 
 initIntroTitleStyle : Animation.Messenger.State Message
@@ -83,6 +88,38 @@ swipeAnimation translate rotate =
         [ Animation.translate (Animation.px translate) (Animation.px 0)
         , Animation.rotate (Animation.deg rotate)
         ]
+
+
+animateMatch : Model -> Model
+animateMatch model =
+    { model
+        | matchStyle =
+            Animation.interrupt
+                [ Animation.toWith
+                    (Animation.easing
+                        { duration = 600
+                        , ease = Ease.inOutQuad
+                        }
+                    )
+                    [ Animation.scale 1.5 ]
+                , Animation.toWith
+                    (Animation.easing
+                        { duration = 300
+                        , ease = Ease.inOutQuad
+                        }
+                    )
+                    [ Animation.scale 1 ]
+                , Animation.wait (millisToPosix 2000)
+                , Animation.toWith
+                    (Animation.easing
+                        { duration = 300
+                        , ease = Ease.inOutQuad
+                        }
+                    )
+                    [ Animation.scale 0 ]
+                ]
+                initMatchStyle
+    }
 
 
 screenTransition : Screen -> Model -> Model

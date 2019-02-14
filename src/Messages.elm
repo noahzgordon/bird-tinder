@@ -9,13 +9,14 @@ type AnimationMessage
     = TopCard Animation.Msg
     | Screen Animation.Msg
     | IntroTitle Animation.Msg
+    | MatchAnim Animation.Msg
 
 
 type Message
     = Animate AnimationMessage
     | IntroAnimationCompleted
     | BirdDismissed
-    | BirdLiked
+    | BirdLiked BirdData
     | BirdLikeCompleted
     | BirdDismissalCompleted
     | DetailOpenClicked
@@ -26,5 +27,4 @@ type Message
     | CurrentTimeReceived Posix
     | TimeZoneReceived Time.Zone
     | WindowSizeInformationReceived Int Int
-    | ScreenClicked
     | BirdsRandomized (List BirdData)

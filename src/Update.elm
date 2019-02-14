@@ -59,13 +59,22 @@ update message model =
                 , Cmd.none
                 )
 
-        BirdLiked ->
+        BirdLiked birdData ->
             if model.cardAnimating then
                 ( model, Cmd.none )
 
             else
-                ( { model | detailedView = False }
+                ( { model
+                    | detailedView = False
+                    , matchNotification =
+                        if String.isEmpty birdData.message then
+                            Nothing
+
+                        else
+                            Just birdData
+                  }
                     |> Model.Animations.animateRightSwipe
+                    |> Model.Animations.animateMatch
                 , Cmd.none
                 )
 
@@ -100,12 +109,6 @@ update message model =
                         , topCardStyle = Model.Animations.initCardStyle
                         , cardAnimating = False
                         , messageQueue = List.interweave model.messageQueue birdMessages
-                        , matchNotification =
-                            if List.isEmpty birdMessages then
-                                Nothing
-
-                            else
-                                Just top
                       }
                     , Cmd.none
                     )
@@ -150,11 +153,6 @@ update message model =
                             )
               }
                 |> Model.Animations.screenTransition (MessageHistory history.birdName)
-            , Cmd.none
-            )
-
-        ScreenClicked ->
-            ( { model | matchNotification = Nothing }
             , Cmd.none
             )
 

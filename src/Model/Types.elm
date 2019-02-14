@@ -13,6 +13,7 @@ type alias Model =
     , topCardStyle : Animation.Messenger.State Message
     , screenStyle : Animation.Messenger.State Message
     , introTitleStyle : Animation.Messenger.State Message
+    , matchStyle : Animation.Messenger.State Message
     , detailedView : Bool
     , currentScreen : Screen
     , cardAnimating : Bool

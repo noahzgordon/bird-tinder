@@ -13,6 +13,7 @@ subscriptions model =
         [ Animation.subscription (Animate << TopCard) [ model.topCardStyle ]
         , Animation.subscription (Animate << Screen) [ model.screenStyle ]
         , Animation.subscription (Animate << IntroTitle) [ model.introTitleStyle ]
+        , Animation.subscription (Animate << MatchAnim) [ model.matchStyle ]
         , Time.every 500 CurrentTimeReceived
         , onResize WindowSizeInformationReceived
         ]

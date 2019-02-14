@@ -28,3 +28,10 @@ update message model =
                     Animation.Messenger.update animateMsg model.introTitleStyle
             in
             ( { model | introTitleStyle = newStyle }, cmds )
+
+        MatchAnim animateMsg ->
+            let
+                ( newStyle, cmds ) =
+                    Animation.Messenger.update animateMsg model.matchStyle
+            in
+            ( { model | matchStyle = newStyle }, cmds )

@@ -3,7 +3,7 @@ module Model exposing (init, setDimensions)
 import Animation
 import Animation.Messenger
 import Messages exposing (..)
-import Model.Animations exposing (initCardStyle, initIntroTitleStyle, initScreenStyle)
+import Model.Animations exposing (initCardStyle, initIntroTitleStyle, initMatchStyle, initScreenStyle)
 import Model.Types exposing (..)
 import Model.Types.BirdData exposing (..)
 import Random
@@ -20,6 +20,7 @@ init flags =
       , topCardStyle = initCardStyle
       , screenStyle = initScreenStyle
       , introTitleStyle = initIntroTitleStyle
+      , matchStyle = initMatchStyle
       , detailedView = False
       , currentScreen = Intro
       , cardAnimating = False

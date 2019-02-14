@@ -36,7 +36,6 @@ layout model =
         [ width fill
         , height fill
         , Background.color Colors.gray
-        , onClick ScreenClicked
         ]
     <|
         el
@@ -54,15 +53,17 @@ layout model =
 
                     Just birdData ->
                         el
-                            [ centerX
-                            , centerY
-                            , width (px 300)
-                            , height (px 300)
-                            , Border.solid
-                            , Border.rounded 20
-                            , Border.glow Colors.transBlack 2
-                            , Background.color Colors.transBlack
-                            ]
+                            ([ centerX
+                             , centerY
+                             , width (px 300)
+                             , height (px 300)
+                             , Border.solid
+                             , Border.rounded 150
+                             , Border.glow Colors.transBlack 2
+                             , Background.color Colors.transBlack
+                             ]
+                                ++ List.map htmlAttribute (Animation.render model.matchStyle)
+                            )
                         <|
                             column [ width fill, height fill, Font.color Colors.white, spacing 15 ]
                                 [ el [ centerX, centerY ] <|
