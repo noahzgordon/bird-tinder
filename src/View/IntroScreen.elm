@@ -17,7 +17,7 @@ view model =
         (el
             ([ centerY
              , centerX
-             , Font.size 36
+             , Font.size 56
              , Font.family
                 [ Font.typeface "Comic Sans MS"
                 , Font.typeface "cursive"

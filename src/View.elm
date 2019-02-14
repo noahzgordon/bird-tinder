@@ -56,18 +56,18 @@ layout model =
                         el
                             [ centerX
                             , centerY
-                            , width (px 200)
-                            , height (px 200)
+                            , width (px 300)
+                            , height (px 300)
                             , Border.solid
                             , Border.rounded 20
-                            , Border.glow Colors.transBlack 5
+                            , Border.glow Colors.transBlack 2
                             , Background.color Colors.transBlack
                             ]
                         <|
-                            column [ width fill, height fill, Font.color Colors.white, spacing 10 ]
+                            column [ width fill, height fill, Font.color Colors.white, spacing 15 ]
                                 [ el [ centerX, centerY ] <|
                                     text "It's a match!"
-                                , image [ centerX, centerY, width (px 100), Border.solid, Border.rounded 20 ]
+                                , image [ centerX, centerY, width (px 100), Border.solid, Border.rounded 200 ]
                                     { src = birdData.image, description = "" }
                                 , el [ centerX, centerY ] <|
                                     text birdData.name
