@@ -1,5 +1,49 @@
-name,location,distance,description,image,message
-a tiny birb,a tree near you,30 feet,so smol much birb,https://images.pexels.com/photos/792416/pexels-photo-792416.jpeg?cs=srgb&dl=animal-avian-beak-792416.jpg&fm=jpg,hey there//wanna peck
-a bigger birb, a big tree near you, 20 feet,wow very big,https://uniqlo.scene7.com/is/image/UNIQLO/goods_99_414921?$pdp-medium$,hi//im a big birb//hi
-a small birb,a small tree,10 feet,wo small,https://www.thesprucepets.com/thmb/-rCtdqVYowAfrKW40rTyXBpAM0s=/400x300/filters:no_upscale():max_bytes(150000):strip_icc()/JavaFinch-7916836320_e279147689_k-5b53da76c9e77c0037002b47.jpg,hi//hi//hi
-a talkative birb,a loud tree, 14 feet,i liek to tlak,https://vignette.wikia.nocookie.net/questionablecontent/images/7/7a/Yelling_Bird.png/revision/latest?cb=20100107084653,hey their
+name,location,age,distance,description,image,message
+polly,upper east side,90 years old,2 miles away,oldie but a goodie. NOT poly,https://s3-media3.fl.yelpcdn.com/bphoto/d_rhVpSvJ82X3axRd8fQSg/ls.jpg,
+ivan,brighton beach,40 years old,6 miles (as the crow flies),less scary irl,https://cdn.audubon.org/cdn/farfuture/_xhvLm8GYbM7I4OnTl4GhvZ4KoNvGcFnd7-nOe-XHu0/mtime:1532354670/sites/default/files/styles/hero_image/public/dsc_1028.jpg?itok=cWcpTq-3,
+salty,the high seas,54 years old,234 miles away,"looking for my pirate; two full eyes, don't apply",https://patch.com/img/cdn20/users/22880691/20161207/110555/styles/T800x600/public/article_images/1-1481126330-551.jpg?width=720,ahoy there ;)
+missy,a tree somewhere,,2 feet away,chicks are my nieces,https://i.pinimg.com/originals/86/be/8c/86be8c8809ae4461ac7130989523ccb2.jpg,
+MAURITIUS,nearby,,243 feet away,no drama,http://4.bp.blogspot.com/-FhEoN-S8n0w/TyrhkIRYlRI/AAAAAAAAEjA/PAR-HUfeZYc/s1600/Crowned-Crane-Panoramic.jpg,
+peeble,nearby,,12 feet away,looking to see what's out there!,http://www.chicobasinranch.com/userfiles/image/journals/GRFL_Maynard_CBR2May10.jpg,
+Uccello,here (not for long),,2 miles away,🇲🇽->🇺🇸->🇨🇦,https://www.fws.gov/daphne/Migratory_Birds/LEAST%20TERN%20HOVER.jpg,
+jessica,somewhere,,20 yards away,swipe left if your wingspan is under 6',https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Brown-Falcon%2C-Vic%2C-3.1.2008.jpg/220px-Brown-Falcon%2C-Vic%2C-3.1.2008.jpg,hi kinda busy lately // sorry not interested
+shirley,nearby,,12 meters away,hey what's up big boy ;),https://i.pinimg.com/736x/80/e9/2e/80e92e32ec0fd56b39474cc8bd502f0e.jpg,heyyyyyyyyyyÿÿ
+hungry,nearby,,43 hectares away,feed me birdseed,https://www.thespruce.com/thmb/7FzORIaHSg8124f30BST1gEpSIo=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/crested-tit--lophophanes-cristatus---standing-on-a-branch-of-tree-eating-seeds---spain--europe--817514886-5af05bdec064710036a0cbcd.jpg,
+Cocky Darling,the internet,,12 inches away,follow me on insta @therealcockatiel,https://i.pinimg.com/originals/09/47/59/094759c3d962a478b74bd107dd3352ee.jpg,
+fredly,my pad,,2 miles away,420 🌳🔥,https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Papageitaucher_Fratercula_arctica.jpg/1200px-Papageitaucher_Fratercula_arctica.jpg,wanna come over? :) // nestflix and chill? :)
+Wendy,nearby,,3 miles away,just winging it,http://d2fbmjy3x0sdua.cloudfront.net/cdn/farfuture/YS-37vBjDQ3Dz-9GEbTbBXv7OmCriyBgRw8YiOpmjfI/mtime:1473969717/sites/default/files/web_apa_2015_winkgaines_279060_red-tailed_hawk_kk.jpg,
+Ozzie,right outside your house,,500 miles away,longest legs this side of the Mississippi,http://www.freakingnews.com/images/app_images/ostrich-ball-1.jpg,
+Chad,nearby,,12 miles away,#jerseylyfe,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Jielbeaumadier_pigeon_boulant_bruenner_agr_paris_2013.jpeg/800px-Jielbeaumadier_pigeon_boulant_bruenner_agr_paris_2013.jpeg,
+Sally,Far Rockaway,,14 miles away,likes long walks on the beach,http://dreamstop.com/wp-content/uploads/2016/08/Seagull-Dream.jpg,
+Florence,nearby,,30 yards away,these legs go all the way down,http://animals.sandiegozoo.org/sites/default/files/2017-07/animals-flamingo-lesser.jpg,
+Humbert,a flower nearby,,12 feet away,highest mass-specific metabolic rate on tinder!,https://ideagirlmedia.com/wp-content/uploads/2011/07/Ruby-Throat-Hummingbird.png,hmmmmmmm // hmmmm ;)
+alberto,nearby,,12 nautical miles away,in this hemisphere for the weekend,https://cdn.britannica.com/s:300x300/71/62571-004-A67BD28F.jpg,
+tammy,a branch,17 months,10 feet away,just seeing what's out there,http://prettybird.ie/wp-content/uploads/2017/11/hummingbird-flight-300x192.jpg,hi :)
+georg,a hole,11 months,12 feet away,just seeing what's out there,https://extension.umd.edu/sites/extension.umd.edu/files/styles/news-500px/public/_images/programs/woodland-steward/bluebirdNY.jpg?itok=H_X5TFg0,hey there ;)
+haley,a tree,6 months,22 feet away,just seeing what's out there,https://alchetron.com/cdn/pretty-bird-0520413e-d48d-41ad-8c88-8c2be062cc5-resize-750.jpg,hey ;)
+Prissy,the jungle,,300 miles away,I'm in the third one from the left,https://www.parrots.org/images/uploads/dreamstime_C_47716185.jpg,HI! // HI! // HI! // :(
+Jeff Beakzos,nearby,,14 miles away,i'll lay you a golden egg,http://2w6kxc22rrr9mabqt1mglgait6.wpengine.netdna-cdn.com/wp-content/uploads/2016/12/fat-goose-1024x579.jpg,
+Pamela,nearby,,20 feet away,"NO HOOKUPS, looking for my prince charming",https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Domestic-crested-duck-CamdenME.jpg/800px-Domestic-crested-duck-CamdenME.jpg,
+Momma Fortuna,nearby,,33 miles away,"looking for a GOOD, RESPONSIBLE daddy to TAKE CARE of these eggs. NO DRAMA","http://avise-birds.bio.uci.edu/pelecaniformes/sulidae/sula_nebouxii/images/9bfbo_with_eggs_2007_04_05.jpg
+",
+birb,nearby,3 months,142 feet away,5 months not 3 months,https://backyardbirdnerd.files.wordpress.com/2017/02/thrasher2.jpg,
+queen,nearby,,4 miles away,nothing sexier than a big beak and well-groomed down,https://pbs.twimg.com/media/DuTq-hjX4AETubH.jpg,hey big boy // send me pics of your nest ;)
+M & N,nearby,,94 miles away,looking to turn this toucan into a threecan,https://us.123rf.com/450wm/araraadt/araraadt1007/araraadt100700022/7456476-two-toucans-playing-on-three.jpg?ver=6,hey there :) // my partner thinks you're cute ;)
+PJ,the arctic circle,9 months,2040 miles away,looking for someone to teach me how to fly,https://www.dalerodgers.co.uk/wp-content/uploads/2014/10/penguin.jpg,hi kinda new to this
+aurora,nearby,,30 yards away,vegan 🌱 chill vibes only 🐦 birds of prey peck left,https://www.popsci.com/sites/popsci.com/files/styles/1000_1x_/public/lorikeets.jpg?itok=w_xIZ_OC,
+Jennifer,nearby,,12 centimeters away,I have a pet worm named Beyoncé 🐛,https://www.plt.org/stuff/contentmgr/files/1/bfb269280218fcd6babdc4081147f412/misc/birds_and_worms.jpg,
+bort,nearby,,2 miles away,"""the raddest bird you've ever met"" -my bff jort",https://i.pinimg.com/236x/24/de/fc/24defcc528edf0baf72acf4db99fc4de--pretty-birds-beautiful-birds.jpg,
+andorf,nearby,,3 miles away,package deal,https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Runner-ducks.jpg/800px-Runner-ducks.jpg,
+swollo,nearby,,203 miles away,come at me bro,https://piximus.net/media2/54061/funny-birds-with-human-hands-2.jpg,
+Ross,nearby,2 years,324 feet away,Vegan // free-ranged // exercise // morning bird // love the early worm,http://midriversnewsmagazine.com/wp-content/uploads/2015/12/rooster.jpg,
+pea,the Bronx Zoo,,15 miles away,preen queen,https://i0.wp.com/www.whats-your-sign.com/wp-content/uploads/2018/02/PeacockSymbolism.jpg?fit=1600%2C1059&ssl=1,
+Firebird,Dominaria,,30233 miles away,be my date to comic-con,https://vignette.wikia.nocookie.net/cryptidz/images/b/b8/Flap.jpg/revision/latest?cb=20140312141953,
+Stud Puffin,nearby,,13 feet away,i'll spoon feed you puffins ;),https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZU9C4ftRNmxm95LhWSt5eEVxRp83DM0dTgUL60Vn3EVRoUMLmTA,
+Dudley,the distant past,extinct,-99999999,what am I doing here,https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2016/dodosmightha.jpg,
+trapped,I'm not sure,,???,please free me from this prison,https://a.1stdibscdn.com/archivesE/upload/3663232/f_49242931466197996422/1390_Main_new_copy_org_z.jpg,help! // please // they won't let me out // please
+fredly,nearby,,42 feet away,i'll be the wind beneath your wings,http://3.bp.blogspot.com/-m9xGmZ4BKew/T6pgiBNjdCI/AAAAAAAAFA8/42QgS5vxX8M/s1600/Bald_Eagle_Stock_by_Crystalsm.jpg,hey there // don't worry I'm not really bald ;)
+mister,nearby,,43 feet away,literally a swallow,https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2018/birdswearing.jpg,
+stan,nearby,,2 miles away,looking for a nice plump date for thanksgiving,https://i.pinimg.com/736x/5d/ea/10/5dea1021714ba81acc3b6c558405c158.jpg,
+pterry,the Jurassic Period,,-2 miles away,old soul,http://images.dinosaurpictures.org/3_pterodactyl_63be.jpg,
+Dante,Birdford-Cormorant,38 years young,1 mile away,hella fly,https://i.ytimg.com/vi/LSU2ST0kO3k/maxresdefault.jpg,
+Esmerelda,Bali,18,10k mi,,http://www.timlaman.com/wildlife-diaries/wp/wp-content/uploads/2013/02/MM7163-041123-02767-Version-2.jpg,let me take you to paradise ;) 
