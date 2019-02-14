@@ -23,7 +23,7 @@ update message model =
                 modelWithUpdatedTime =
                     { model | currentTime = time }
             in
-            if Time.posixToMillis time - Time.posixToMillis model.lastMessageTime > 8000 then
+            if Time.posixToMillis time - Time.posixToMillis model.lastMessageTime > 6000 then
                 case model.messageQueue of
                     [] ->
                         ( modelWithUpdatedTime, Cmd.none )
@@ -109,6 +109,12 @@ update message model =
                         , topCardStyle = Model.Animations.initCardStyle
                         , cardAnimating = False
                         , messageQueue = List.interweave model.messageQueue birdMessages
+                        , lastMessageTime =
+                            if List.isEmpty model.messageQueue then
+                                model.currentTime
+
+                            else
+                                model.lastMessageTime
                       }
                     , Cmd.none
                     )
