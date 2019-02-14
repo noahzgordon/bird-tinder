@@ -25,7 +25,7 @@ import View.MessageScreen
 
 view : Model -> Browser.Document Message
 view model =
-    { title = "Bird Tinder"
+    { title = "Pecker"
     , body = [ layout model |> Element.layout [] ]
     }
 

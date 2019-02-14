@@ -2,6 +2,7 @@ module Model.Animations exposing (animateLeftSwipe, animateRightSwipe, initCardS
 
 import Animation
 import Animation.Messenger
+import Ease
 import Messages exposing (..)
 import Model.Types exposing (..)
 import Time exposing (millisToPosix)
@@ -29,14 +30,14 @@ initIntroTitleStyle =
             [ Animation.toWith
                 (Animation.easing
                     { duration = 1000
-                    , ease = (*) 1
+                    , ease = Ease.inOutQuad
                     }
                 )
-                [ Animation.scale 1.2, Animation.rotate (Animation.deg -10) ]
+                [ Animation.scale 1.5, Animation.rotate (Animation.deg -10) ]
             , Animation.toWith
                 (Animation.easing
                     { duration = 500
-                    , ease = (*) 1
+                    , ease = Ease.inOutQuad
                     }
                 )
                 [ Animation.scale 1, Animation.rotate (Animation.deg 0) ]
@@ -75,8 +76,8 @@ swipeAnimation : Float -> Float -> Animation.Messenger.Step msg
 swipeAnimation translate rotate =
     Animation.toWith
         (Animation.easing
-            { duration = 500
-            , ease = (*) 2
+            { duration = 300
+            , ease = Ease.inQuad
             }
         )
         [ Animation.translate (Animation.px translate) (Animation.px 0)

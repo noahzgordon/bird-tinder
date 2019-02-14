@@ -23,7 +23,7 @@ update message model =
                 modelWithUpdatedTime =
                     { model | currentTime = time }
             in
-            if Time.posixToMillis time - Time.posixToMillis model.lastMessageTime > 5000 then
+            if Time.posixToMillis time - Time.posixToMillis model.lastMessageTime > 8000 then
                 case model.messageQueue of
                     [] ->
                         ( modelWithUpdatedTime, Cmd.none )

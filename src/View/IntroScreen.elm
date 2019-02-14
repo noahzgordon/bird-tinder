@@ -27,5 +27,5 @@ view model =
                 ++ List.map htmlAttribute (Animation.render model.introTitleStyle)
             )
          <|
-            text "BIRD TINDER"
+            text "PECKER"
         )
