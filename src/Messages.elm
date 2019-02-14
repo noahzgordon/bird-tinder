@@ -1,7 +1,7 @@
 module Messages exposing (AnimationMessage(..), Message(..))
 
 import Animation
-import Model.Types.BirdData exposing (BirdMessageHistory)
+import Model.Types.BirdData exposing (..)
 import Time exposing (Posix)
 
 
@@ -27,3 +27,4 @@ type Message
     | TimeZoneReceived Time.Zone
     | WindowSizeInformationReceived Int Int
     | ScreenClicked
+    | BirdsRandomized (List BirdData)

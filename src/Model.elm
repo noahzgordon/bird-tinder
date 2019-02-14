@@ -6,13 +6,15 @@ import Messages exposing (..)
 import Model.Animations exposing (initCardStyle, initIntroTitleStyle, initScreenStyle)
 import Model.Types exposing (..)
 import Model.Types.BirdData exposing (..)
+import Random
+import Random.List
 import Task
 import Time exposing (Posix)
 
 
 init : Flags -> ( Model, Cmd Message )
 init flags =
-    ( { remainingBirds = flags.birdData
+    ( { remainingBirds = []
       , likedBirds = []
       , dislikedBirds = []
       , topCardStyle = initCardStyle
@@ -30,7 +32,11 @@ init flags =
       , matchNotification = Nothing
       }
         |> setDimensions flags.windowDimensions
-    , Time.here |> Task.perform TimeZoneReceived
+    , Cmd.batch
+        [ Time.here
+            |> Task.perform TimeZoneReceived
+        , Random.generate BirdsRandomized (Random.List.shuffle flags.birdData)
+        ]
     )
 
 

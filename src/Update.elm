@@ -158,6 +158,11 @@ update message model =
             , Cmd.none
             )
 
+        BirdsRandomized birds ->
+            ( { model | remainingBirds = birds }
+            , Cmd.none
+            )
+
 
 addToMessages : Posix -> BirdMessage -> List BirdMessageHistory -> List BirdMessageHistory
 addToMessages time { birdName, message } histories =
