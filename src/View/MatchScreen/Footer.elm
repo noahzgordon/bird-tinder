@@ -91,7 +91,7 @@ view model =
                                     |> minimum 80
                                 )
                             ]
-                            [ el [ Font.size 18, paddingXY 20 0 ] (text bird.description)
+                            [ paragraph [ Font.size 18, paddingXY 20 0 ] [ text bird.description ]
                             ]
                         ]
 
